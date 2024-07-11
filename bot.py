@@ -9,19 +9,28 @@ logging.basicConfig(
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await context.bot.send_message(chat_id=update.effective_chat.id, text="*just paste*", parse_mode='Markdown')
+    await context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text="*just paste*",
+        parse_mode='Markdown'
+    )
 
 
 async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await context.bot.send_message(chat_id=update.effective_chat.id,
-                                   text=escape_underline(replace_bold(update.message.text)),
-                                   parse_mode='Markdown')
+    await context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text=escape_underline(replace_bold(update.message.text)),
+        parse_mode='Markdown'
+    )
+
 
 def escape_underline(message: str):
     return message.replace('_', '\_')
 
+
 def replace_bold(message: str):
     return message.replace('**', '*')
+
 
 if __name__ == '__main__':
     application = ApplicationBuilder().token('0000001111:TELEGRAM_TOKEN_HERE').build()
