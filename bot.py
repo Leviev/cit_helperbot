@@ -19,13 +19,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
-        text=escape_underline(replace_bold(update.message.text)),
+        text=replace_bold(update.message.text),
         parse_mode='Markdown'
     )
-
-
-def escape_underline(message: str):
-    return message.replace('_', '\_')
 
 
 def replace_bold(message: str):
